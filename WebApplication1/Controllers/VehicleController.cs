@@ -198,8 +198,10 @@ namespace WebApplication1.Controllers
                     HttpResponseMessage getData = await client.PostAsJsonAsync<LoginDto>("/Owner/LogIn", user);
                     if (getData.IsSuccessStatusCode)
                     {
-                        StoreToekn.login = true; 
+                        StoreToekn.login = true;
+                        
                         string results = getData.Content.ReadAsStringAsync().Result;
+                       
                         var data =  JsonConvert.DeserializeObject<ServiceResponse<string>>(results);
                          StoreToekn.token = data.Data; 
                         

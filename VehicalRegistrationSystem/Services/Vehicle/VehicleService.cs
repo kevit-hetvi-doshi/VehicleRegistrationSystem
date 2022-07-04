@@ -134,7 +134,7 @@ namespace VehicalRegistrationSystem.Services.Vehical
         {
             var serviceresponce = new ServiceResponse<GetVehicleDto>();
 
-           // try
+        //    try
            // {
 
                 var vehicle = await _context.vehicles
@@ -152,7 +152,7 @@ namespace VehicalRegistrationSystem.Services.Vehical
                     _context.SaveChanges();
                 serviceresponce.Data = _mapper.Map<GetVehicleDto>(vehicle);
                     var v = _mapper.Map<GetVehicleDto>(vehicle);
-                return v;
+                   return v;
 
 
 
@@ -162,25 +162,25 @@ namespace VehicalRegistrationSystem.Services.Vehical
 
                     serviceresponce.Success = false;
                     serviceresponce.message = "Vehicle not found !!!";
-                    //return serviceresponce;
-                    return _mapper.Map<GetVehicleDto>(vehicle);
+                  // return serviceresponce;
+                   return _mapper.Map<GetVehicleDto>(vehicle);
 
                 }
 
             
 
 
-            // }
+           //  }
 
 
 
-            // catch (Exception e)
-            //  {
-            //    serviceresponce.Success = false;
-            //     serviceresponce.message = e.Message;
+           //  catch (Exception e)
+           //   {
+           //   serviceresponce.Success = false;
+            //    serviceresponce.message = e.Message;
 
-            //  }
-            //return serviceresponce;
+         //    }
+           // return serviceresponce;
 
         }
     }
