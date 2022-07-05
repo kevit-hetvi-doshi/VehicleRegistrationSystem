@@ -130,29 +130,29 @@ namespace VehicalRegistrationSystem.Services.Vehical
             return responce;
         }
 
-        public async Task<GetVehicleDto> UpdateVehicle(UpdateVehicleDto updateVehicle)
+        public async Task<ServiceResponse<GetVehicleDto>> UpdateVehicle(ServiceResponse<UpdateVehicleDto> updateVehicle)
         {
             var serviceresponce = new ServiceResponse<GetVehicleDto>();
 
-        //    try
-           // {
+           try
+            {
 
                 var vehicle = await _context.vehicles
                     .Include(c => c.owner)
-                    .FirstOrDefaultAsync(x => x.id == updateVehicle.id );
+                    .FirstOrDefaultAsync(x => x.id == updateVehicle.Data.id );
 
                 if ( vehicle.owner.Id == GetOwnerId())
                 {
-                    vehicle.name = updateVehicle.name;
-                    vehicle.RtoNumber = updateVehicle.RtoNumber;
-                    vehicle.Description = updateVehicle.Description;
-                    vehicle.fuel = updateVehicle.fuel;
+                    vehicle.name = updateVehicle.Data.name;
+                    vehicle.RtoNumber = updateVehicle.Data.RtoNumber;
+                    vehicle.Description = updateVehicle.Data.Description;
+                    vehicle.fuel = updateVehicle.Data.fuel;
 
 
                     _context.SaveChanges();
-                serviceresponce.Data = _mapper.Map<GetVehicleDto>(vehicle);
-                    var v = _mapper.Map<GetVehicleDto>(vehicle);
-                   return v;
+                  serviceresponce.Data = _mapper.Map<GetVehicleDto>(vehicle);
+                    //var v = _mapper.Map<GetVehicleDto>(vehicle);
+                 //  return v;
 
 
 
@@ -162,25 +162,25 @@ namespace VehicalRegistrationSystem.Services.Vehical
 
                     serviceresponce.Success = false;
                     serviceresponce.message = "Vehicle not found !!!";
-                  // return serviceresponce;
-                   return _mapper.Map<GetVehicleDto>(vehicle);
+                  return serviceresponce;
+                 //  return _mapper.Map<GetVehicleDto>(vehicle);
 
                 }
 
             
 
 
-           //  }
+             }
 
 
 
-           //  catch (Exception e)
-           //   {
-           //   serviceresponce.Success = false;
-            //    serviceresponce.message = e.Message;
+            catch (Exception e)
+             {
+              serviceresponce.Success = false;
+               serviceresponce.message = e.Message;
 
-         //    }
-           // return serviceresponce;
+             }
+           return serviceresponce;
 
         }
     }

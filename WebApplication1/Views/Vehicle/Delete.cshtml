@@ -8,7 +8,39 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data.id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data.name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.RtoNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data.RtoNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data.fuel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data.fuel)
+        </dd>
+    </dl>
 
     
     <form asp-action="Delete">

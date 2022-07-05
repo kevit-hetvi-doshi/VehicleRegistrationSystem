@@ -21,6 +21,7 @@ namespace VehicalRegistrationSystem.Controllers
 
         [HttpGet]
         [Route("GETALL")]
+       // [ValidateAntiForgeryToken]
         public async Task<ActionResult<ServiceResponse<List<GetVehicleDto>>>> GETall()
         {
             return Ok(await _vehicleService.GetAllVehical());
@@ -36,6 +37,7 @@ namespace VehicalRegistrationSystem.Controllers
         }
 
         [HttpPost]
+        
         [Route("AddVehicle")]
         public async Task<ActionResult<ServiceResponse<List<GetVehicleDto>>>> AddVehicle(AddVehicleDto newVehicle)
         {
@@ -48,7 +50,7 @@ namespace VehicalRegistrationSystem.Controllers
         [Route("UpdateVehicle")]
        // [Route("{id}")]
 
-        public async Task<ActionResult<GetVehicleDto>> UpdateVehicle(UpdateVehicleDto newVehicle)
+        public async Task<ActionResult<ServiceResponse<GetVehicleDto>>> UpdateVehicle(ServiceResponse<UpdateVehicleDto> newVehicle)
         {
             return Ok(await _vehicleService.UpdateVehicle(newVehicle));
 

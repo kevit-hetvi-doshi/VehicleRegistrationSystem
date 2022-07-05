@@ -12,7 +12,7 @@ namespace VehicalRegistrationSystem.Services.Vehical
 
         Task<ServiceResponse<List<GetVehicleDto>>> AddVehicle(AddVehicleDto newVehicle);
 
-        Task<GetVehicleDto>UpdateVehicle (UpdateVehicleDto updateVehicle);
+        Task<ServiceResponse<GetVehicleDto>> UpdateVehicle(ServiceResponse<UpdateVehicleDto> updateVehicle);
 
         Task<ServiceResponse<List<GetVehicleDto>>> DeleteVehicle(int id);
     }

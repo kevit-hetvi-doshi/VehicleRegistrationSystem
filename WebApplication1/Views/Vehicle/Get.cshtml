@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+    <head>
+        
+    </head>
+    <body>
+    <input type="number" id="number" />
+    <input type="button" value="submit" id="submit"></input>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript">
+
+            $(Document).ready(function() {
+
+                $('#submit').click(function() { 
+
+                    var id = $('#number').val();
+                    $.ajax({
+
+                        type:'Post' ,
+                        url : 'https://localhost:7238/Vehicle/' ,
+                        data: {id : id},
+                        dataType : 'json',
+                        success: function(data) {
+
+                            $('#Details').empty();
+                            
+                            $('#Details').append(data.id);
+                        }
+                            
+
+                    });
+
+                        
+
+                });
+            
+      
+          });
+            
+        
+        </script>
+ 
+
+        <div id="Details"></div>
+    </body>
+</html>
