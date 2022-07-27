@@ -29,6 +29,12 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult E2()
+        {
+            return View();
+        }
+
+
         public async Task<ActionResult> List()
         {
 
@@ -48,8 +54,13 @@ namespace WebApplication1.Controllers
                 HttpResponseMessage getData = await client.GetAsync("Vehicle/GETALL");
                 if (getData.IsSuccessStatusCode)
                 {
-                    string results = getData.Content.ReadAsStringAsync().Result;
+                    var results = getData.Content.ReadAsStringAsync().Result;
                     data = JsonConvert.DeserializeObject<ServiceResponse<List<GetVehicleDto>>>(results);
+                     var num = data.Data.Count; 
+                    if(num == 0 )
+                    {
+                        return RedirectToAction("E2");
+                    }
                 }
                 else
                 {
